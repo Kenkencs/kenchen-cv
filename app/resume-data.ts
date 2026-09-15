@@ -35,10 +35,12 @@ export type ResumeContent = {
     kicker: string;
     title: string;
     description: string;
-    name: string;
-    kind: string;
-    stack: string[];
-    bullets: string[];
+    items: Array<{
+      name: string;
+      kind: string;
+      stack: string[];
+      bullets: string[];
+    }>;
   };
   competitions: {
     kicker: string;
@@ -75,7 +77,7 @@ export const resumeContent: Record<Language, ResumeContent> = {
     nav: {
       overview: 'Overview',
       education: 'Education',
-      project: 'Project',
+      project: 'Projects',
       competitions: 'Competitions',
       skills: 'Skills',
       contact: 'Contact',
@@ -104,16 +106,39 @@ export const resumeContent: Record<Language, ResumeContent> = {
     },
     project: {
       kicker: '02 / Selected work',
-      title: 'Project',
-      description: 'A focused product that makes modern AI easier to use.',
-      name: 'iAsk',
-      kind: 'AI Digital Literacy Assistant',
-      stack: ['Python', 'Streamlit', 'LangChain', 'OpenAI API', 'SerpAPI'],
-      bullets: [
-        'Built an LLM-powered digital assistant for users with low technical literacy, integrating conversational memory, voice input, and personalized onboarding.',
-        'Designed structured prompt pipelines to clarify vague questions, keep responses relevant to technology topics, and improve answer quality for beginners.',
-        'Integrated real-time web search through a LangChain ReAct agent and SerpAPI, combining retrieved information with LLM-generated troubleshooting guidance.',
-        'Developed a proficiency quiz to segment beginner and experienced users and adapt the product experience to their needs.',
+      title: 'Projects',
+      description: 'AI products designed to turn complex technology and real-world data into useful outcomes.',
+      items: [
+        {
+          name: 'iAsk',
+          kind: 'AI Digital Literacy Assistant',
+          stack: ['Python', 'Streamlit', 'LangChain', 'OpenAI API', 'SerpAPI'],
+          bullets: [
+            'Built an LLM-powered digital assistant for users with low technical literacy, integrating conversational memory, voice input, and personalized onboarding.',
+            'Designed structured prompt pipelines to clarify vague questions, keep responses relevant to technology topics, and improve answer quality for beginners.',
+            'Integrated real-time web search through a LangChain ReAct agent and SerpAPI, combining retrieved information with LLM-generated troubleshooting guidance.',
+            'Developed a proficiency quiz to segment beginner and experienced users and adapt the product experience to their needs.',
+          ],
+        },
+        {
+          name: 'Agentic Product Analyst',
+          kind: 'AI-Powered User Feedback Analysis System',
+          stack: [
+            'Python',
+            'LangChain',
+            'LangGraph',
+            'OpenAI Agents SDK',
+            'DeepSeek API',
+            'RAG',
+            'Sentence Transformers',
+          ],
+          bullets: [
+            'Built an agentic product-analysis system that analyzes user feedback and dynamically decides whether to retrieve product evidence, invoke tools, or answer directly, generating grounded product insights and recommendations.',
+            'Developed a semantic RAG pipeline with embeddings, similarity search, Top-K retrieval, and relevance filtering, enabling the agent to retrieve relevant product feedback while refusing unsupported conclusions when evidence is insufficient.',
+            'Designed stateful tool-calling workflows with session memory and LangGraph orchestration, separating LLM reasoning, deterministic retrieval, and application logic for more reliable, maintainable, and debuggable agent behavior.',
+            'Built an evaluation and failure-analysis framework for tool-selection accuracy, retrieval quality, groundedness, and latency, including tests for hallucination, redundant agent loops, and indirect prompt injection.',
+          ],
+        },
       ],
     },
     competitions: {
@@ -221,15 +246,38 @@ export const resumeContent: Record<Language, ResumeContent> = {
     project: {
       kicker: '02 / 代表项目',
       title: '项目经历',
-      description: '让现代 AI 更容易被普通用户理解和使用。',
-      name: 'iAsk',
-      kind: 'AI 数字素养助手',
-      stack: ['Python', 'Streamlit', 'LangChain', 'OpenAI API', 'SerpAPI'],
-      bullets: [
-        '面向数字技术基础较弱的用户设计并开发 LLM 智能助手，支持多轮对话记忆、语音输入及个性化引导。',
-        '设计结构化 Prompt 工作流，对用户的模糊问题进行澄清，限制模型回答范围，并提升初学者的使用体验与回答质量。',
-        '基于 LangChain ReAct Agent 与 SerpAPI 接入实时网络搜索，将检索结果与 LLM 生成的故障排查建议进行整合。',
-        '设计用户能力测试，根据结果区分初学者与较熟练用户，并针对不同技术水平调整产品体验。',
+      description: '通过 AI 产品将复杂技术与真实数据转化为清晰、实用的成果。',
+      items: [
+        {
+          name: 'iAsk',
+          kind: 'AI 数字素养助手',
+          stack: ['Python', 'Streamlit', 'LangChain', 'OpenAI API', 'SerpAPI'],
+          bullets: [
+            '面向数字技术基础较弱的用户设计并开发 LLM 智能助手，支持多轮对话记忆、语音输入及个性化引导。',
+            '设计结构化 Prompt 工作流，对用户的模糊问题进行澄清，限制模型回答范围，并提升初学者的使用体验与回答质量。',
+            '基于 LangChain ReAct Agent 与 SerpAPI 接入实时网络搜索，将检索结果与 LLM 生成的故障排查建议进行整合。',
+            '设计用户能力测试，根据结果区分初学者与较熟练用户，并针对不同技术水平调整产品体验。',
+          ],
+        },
+        {
+          name: 'Agentic Product Analyst',
+          kind: 'AI 智能产品分析系统',
+          stack: [
+            'Python',
+            'LangChain',
+            'LangGraph',
+            'OpenAI Agents SDK',
+            'DeepSeek API',
+            'RAG',
+            'Sentence Transformers',
+          ],
+          bullets: [
+            '设计并开发面向用户反馈分析的 Agentic AI 产品分析系统，由 Agent 根据用户问题动态判断是否调用工具、检索产品数据或直接回答，并基于真实用户反馈生成产品洞察与优化建议。',
+            '构建基于 Embedding 的语义 RAG 检索流程，结合相似度搜索、Top-K 检索及相关性阈值过滤，从用户反馈中提取相关证据，并在证据不足时避免生成缺乏依据的产品结论。',
+            '基于 LangGraph 与 Session Memory 设计有状态的工具调用与 Agent 工作流，将 LLM 推理、确定性检索及应用逻辑进行模块化拆分，提升 Agent 系统的可靠性、可维护性与可调试性。',
+            '搭建 Agent 评估与故障分析框架，对工具选择准确率、检索质量、回答 Groundedness、响应延迟等指标进行测试，并覆盖幻觉、重复工具调用及间接 Prompt Injection 等典型 Agent 失败场景。',
+          ],
+        },
       ],
     },
     competitions: {

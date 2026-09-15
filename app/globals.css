@@ -212,6 +212,7 @@
 .education-main p, .education-card time { color: #697286; font-size: 0.88rem; }
 .education-card time { text-align: right; }
 
+.project-list { display: grid; gap: 1.5rem; }
 .project-card { background: radial-gradient(circle at 89% 15%, rgb(96 165 250 / 22%), transparent 18rem), var(--midnight); border: 1px solid rgb(255 255 255 / 9%); border-radius: 2rem; box-shadow: 0 25px 65px rgb(15 23 42 / 18%); color: white; overflow: hidden; padding: clamp(1.5rem, 5vw, 3rem); position: relative; }
 .project-orbit { border: 1px solid rgb(125 167 255 / 19%); border-radius: 50%; height: 22rem; position: absolute; right: -12rem; top: -12rem; width: 22rem; }
 .project-orbit::after { border: 1px solid rgb(125 167 255 / 13%); border-radius: inherit; content: ''; inset: 3rem; position: absolute; }

@@ -136,12 +136,16 @@ export function ResumeSite() {
 
         <section className="content-section section-wrap" id="project">
           <div className="section-heading"><p className="section-kicker">{content.project.kicker}</p><div><h2>{content.project.title}</h2><p>{content.project.description}</p></div></div>
-          <article className="project-card">
-            <div className="project-orbit" aria-hidden="true" />
-            <div className="project-topline"><div><span className="project-label">{content.project.kind}</span><h3>{content.project.name}</h3></div><Sparkles aria-hidden="true" /></div>
-            <div className="stack-list" aria-label={language === 'zh' ? '技术栈' : 'Technology stack'}>{content.project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-            <ul className="project-points">{content.project.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-          </article>
+          <div className="project-list">
+            {content.project.items.map((project) => (
+              <article className="project-card" key={project.name}>
+                <div className="project-orbit" aria-hidden="true" />
+                <div className="project-topline"><div><span className="project-label">{project.kind}</span><h3>{project.name}</h3></div><Sparkles aria-hidden="true" /></div>
+                <div className="stack-list" aria-label={language === 'zh' ? '技术栈' : 'Technology stack'}>{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+                <ul className="project-points">{project.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="content-section section-wrap" id="competitions">
